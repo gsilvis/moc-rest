@@ -119,6 +119,7 @@ def request_handler(request):
         logger.debug('Recieved api call %s(%s)',
                      endpoint.__name__,
                       ', '.join([repr(arg) for arg in positional_args]))
+        local.environ = request.environ
         body = endpoint(*positional_args)
         if not body:
             body = ""
